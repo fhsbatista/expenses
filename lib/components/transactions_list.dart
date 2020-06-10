@@ -10,10 +10,24 @@ class TransactionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map((tr) => tr.toCard()).toList(),
+    return Container(
+      height: 200,
+      child: ListView.builder(
+        itemCount: transactions.length,
+        itemBuilder: (context, index) {
+          return transactions[index].toCard();
+        },
+      ),
     );
   }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return Column(
+//      children: transactions.map((tr) => tr.toCard()).toList(),
+//    );
+//  }
+
 }
 
 extension on Transaction {

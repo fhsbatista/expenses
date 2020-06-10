@@ -18,16 +18,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Card(
-              child: Text('Gráfico'),
-              elevation: 5,
-            ),
-            TransactionsOverView(),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Card(
+            child: Text('Gráfico'),
+            elevation: 5,
+          ),
+          TransactionsOverView(),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }

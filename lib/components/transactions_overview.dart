@@ -1,10 +1,10 @@
 import 'dart:math';
 
+import 'package:expenses/components/transactions_list.dart';
 import 'package:flutter/material.dart';
 
 import '../models/transaction.dart';
 import 'transaction_form.dart';
-import 'transactions_list.dart';
 
 class TransactionsOverView extends StatefulWidget {
   @override
@@ -49,9 +49,9 @@ class _TransactionsOverViewState extends State<TransactionsOverView> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TransactionsList(transactions),
         TransactionForm(
             onSubmit: (title, value) => _addTransaction(title, value)),
+        TransactionsList(transactions),
       ],
     );
   }
