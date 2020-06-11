@@ -9,20 +9,15 @@ class TransactionsOverView extends StatefulWidget {
   TransactionsOverView(this._transactions);
 
   @override
-  _TransactionsOverViewState createState() =>
-      _TransactionsOverViewState(_transactions);
+  _TransactionsOverViewState createState() => _TransactionsOverViewState();
 }
 
 class _TransactionsOverViewState extends State<TransactionsOverView> {
-  List<Transaction> _transactions;
-
-  _TransactionsOverViewState(this._transactions);
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TransactionsList(_transactions),
+        TransactionsList(widget._transactions),
       ],
     );
   }

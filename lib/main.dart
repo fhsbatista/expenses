@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _transactions.add(transaction);
     });
+    Navigator.of(context).pop();
   }
 
   @override
