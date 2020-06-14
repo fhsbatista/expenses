@@ -21,6 +21,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  assets:
+    - assets/images/waiting.png
   fonts:
     - family: OpenSans
       fonts:

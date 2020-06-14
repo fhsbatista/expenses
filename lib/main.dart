@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             child: Text('Gráfico'),
             elevation: 5,
           ),
-          TransactionsOverView(_transactions),
+          TransactionsOverView(List()),
         ],
       ),
       floatingActionButton: FloatingActionButton(

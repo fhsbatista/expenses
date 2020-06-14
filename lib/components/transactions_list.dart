@@ -12,12 +12,36 @@ class TransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 500,
-      child: ListView.builder(
-        itemCount: transactions.length,
-        itemBuilder: (context, index) {
-          return transactions[index].toCard();
-        },
-      ),
+      child: transactions.isNotEmpty
+          ? ListView.builder(
+              itemCount: transactions.length,
+              itemBuilder: (context, index) {
+                return transactions[index].toCard();
+              },
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    child: Text('Nenhuma transação foi encontrada'),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 200,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              ],
+            ),
     );
   }
 
