@@ -13,6 +13,17 @@ class ExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: ('Despesas Pessoais'),
+      theme: ThemeData(
+        fontFamily: 'OpenSans',
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'OpenSans'),
+              ),
+        ),
+      ),
       home: HomePage(),
     );
   }
