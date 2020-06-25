@@ -1,3 +1,4 @@
+import 'package:expenses/components/chart.dart';
 import 'package:expenses/components/transactions_list.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,12 @@ import '../models/transaction.dart';
 
 class TransactionsOverView extends StatefulWidget {
   final List<Transaction> _transactions;
+
+  List<Transaction> get _transactionsOnLast7Days {
+    return _transactions.where((element) {
+      return element.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   TransactionsOverView(this._transactions);
 
@@ -17,6 +24,7 @@ class _TransactionsOverViewState extends State<TransactionsOverView> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        Chart(transactions: widget._transactionsOnLast7Days),
         TransactionsList(widget._transactions),
       ],
     );

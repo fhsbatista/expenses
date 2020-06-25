@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
     Transaction(
       id: '32',
       title: 'Tênis de corrida',
-      value: 320,
-      date: DateTime.now(),
+      value: 3200,
+      date: DateTime.now().subtract(Duration(days: 5)),
     ),
     Transaction(
       id: '33',
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             child: Text('Gráfico'),
             elevation: 5,
           ),
-          TransactionsOverView(List()),
+          TransactionsOverView(_transactions),
         ],
       ),
       floatingActionButton: FloatingActionButton(
