@@ -45,19 +45,25 @@ class Chart extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(20),
       elevation: 6,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: _groupedtransactions
-            .map((transaction) {
-              return ChartBar(
-                transaction['day'],
-                transaction['value'],
-                (transaction['value'] as double) / _weekTotalValue,
-              );
-            })
-            .toList()
-            .reversed
-            .toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: _groupedtransactions
+              .map((transaction) {
+                return Flexible(
+                  fit: FlexFit.tight,
+                  child: ChartBar(
+                    transaction['day'],
+                    transaction['value'],
+                    (transaction['value'] as double) / _weekTotalValue,
+                  ),
+                );
+              })
+              .toList()
+              .reversed
+              .toList(),
+        ),
       ),
     );
   }

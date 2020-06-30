@@ -90,15 +90,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Card(
-            child: Text('Gráfico'),
-            elevation: 5,
-          ),
-          TransactionsOverView(_transactions),
-        ],
-      ),
+      body: TransactionsOverView(_transactions),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _openTransactionForm(context),
