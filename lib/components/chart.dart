@@ -28,7 +28,7 @@ class Chart extends StatelessWidget {
         'day': getDayOfWeekDescription(dayOfWeek),
         'value': totalDayValue,
       };
-    }).reversed.toList();
+    });
   }
 
   double get _weekTotalValue {
