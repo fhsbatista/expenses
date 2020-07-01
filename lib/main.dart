@@ -14,7 +14,19 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       title: ('Despesas Pessoais'),
       theme: ThemeData(
+        primarySwatch: Colors.blue,
+        accentColor: Colors.amber,
         fontFamily: 'OpenSans',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              button: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline6: TextStyle(

@@ -51,9 +51,10 @@ class _TransactionFormState extends State<TransactionForm> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                FlatButton(
+                RaisedButton(
                   child: Text('Nova Transação'),
-                  textColor: Colors.purple,
+                  color: Theme.of(context).primaryColor,
+                  textColor: Theme.of(context).textTheme.button.color,
                   onPressed: _onSubmit,
                 ),
               ],
