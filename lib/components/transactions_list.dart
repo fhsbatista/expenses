@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function(String) onDeleteItem;
 
-  TransactionsList(this.transactions);
+  TransactionsList(this.transactions, this.onDeleteItem);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,10 @@ class TransactionsList extends StatelessWidget {
             ? ListView.builder(
                 itemCount: transactions.length,
                 itemBuilder: (context, index) {
-                  return transactions[index].toCard();
+                  return transactions[index].toCard(
+                    context,
+                    (id) => onDeleteItem(id),
+                  );
                 },
               )
             : Column(
@@ -47,18 +51,10 @@ class TransactionsList extends StatelessWidget {
       ),
     );
   }
-
-//  @override
-//  Widget build(BuildContext context) {
-//    return Column(
-//      children: transactions.map((tr) => tr.toCard()).toList(),
-//    );
-//  }
-
 }
 
 extension on Transaction {
-  Card toCard() {
+  Card toCard(BuildContext context, Function(String) onDelete) {
     return Card(
       elevation: 4,
       child: ListTile(
@@ -96,6 +92,13 @@ extension on Transaction {
           style: TextStyle(
             color: Colors.grey,
           ),
+        ),
+        trailing: IconButton(
+          icon: Icon(
+            Icons.delete,
+            color: Theme.of(context).errorColor,
+          ),
+          onPressed: () => onDelete(this.id),
         ),
       ),
     );

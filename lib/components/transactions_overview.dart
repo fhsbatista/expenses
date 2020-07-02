@@ -6,6 +6,7 @@ import '../models/transaction.dart';
 
 class TransactionsOverView extends StatefulWidget {
   final List<Transaction> _transactions;
+  final Function(String) onDeleteTransactionRequest;
 
   List<Transaction> get _transactionsOnLast7Days {
     return _transactions.where((element) {
@@ -13,7 +14,7 @@ class TransactionsOverView extends StatefulWidget {
     }).toList();
   }
 
-  TransactionsOverView(this._transactions);
+  TransactionsOverView(this._transactions, this.onDeleteTransactionRequest);
 
   @override
   _TransactionsOverViewState createState() => _TransactionsOverViewState();
@@ -25,7 +26,8 @@ class _TransactionsOverViewState extends State<TransactionsOverView> {
     return Column(
       children: <Widget>[
         Chart(transactions: widget._transactionsOnLast7Days),
-        TransactionsList(widget._transactions),
+        TransactionsList(
+            widget._transactions, widget.onDeleteTransactionRequest),
       ],
     );
   }

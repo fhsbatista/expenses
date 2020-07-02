@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _addTransaction(String title, double value, DateTime date) {
+  _addTransaction(String title, double value, DateTime date) {
     final transaction = Transaction(
         id: Random().nextDouble().toString(),
         title: title,
@@ -69,6 +69,12 @@ class _HomePageState extends State<HomePage> {
       _transactions.add(transaction);
     });
     Navigator.of(context).pop();
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((element) => element.id == id);
+    });
   }
 
   @override
@@ -83,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: TransactionsOverView(_transactions),
+      body: TransactionsOverView(_transactions, (id) => _deleteTransaction(id)),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _openTransactionForm(context),
