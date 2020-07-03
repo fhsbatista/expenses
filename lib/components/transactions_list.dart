@@ -14,7 +14,6 @@ class TransactionsList extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12),
       child: Container(
-        height: 500,
         child: transactions.isNotEmpty
             ? ListView.builder(
                 itemCount: transactions.length,

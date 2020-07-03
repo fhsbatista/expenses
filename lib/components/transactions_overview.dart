@@ -23,12 +23,24 @@ class TransactionsOverView extends StatefulWidget {
 class _TransactionsOverViewState extends State<TransactionsOverView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Chart(transactions: widget._transactionsOnLast7Days),
-        TransactionsList(
-            widget._transactions, widget.onDeleteTransactionRequest),
-      ],
+    final appBarHeight = Scaffold.of(context).appBarMaxHeight;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final availableSize = screenHeight - appBarHeight;
+
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: availableSize * 0.22,
+            child: Chart(transactions: widget._transactionsOnLast7Days),
+          ),
+          Container(
+            height: availableSize * 0.78,
+            child: TransactionsList(
+                widget._transactions, widget.onDeleteTransactionRequest),
+          ),
+        ],
+      ),
     );
   }
 }
