@@ -11,41 +11,51 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 20,
-          child: FittedBox(
-            child: Text(
-              totalValue.toCurrency(),
-            ),
-          ),
-        ),
-        SizedBox(height: 5),
-        Container(
-          width: 10,
-          height: 60,
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(5)),
-              ),
-              FractionallySizedBox(
-                heightFactor: percentage,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(5)),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Column(
+          children: <Widget>[
+            Container(
+              height: constraints.maxHeight * 0.2,
+              child: FittedBox(
+                child: Text(
+                  totalValue.toCurrency(),
                 ),
               ),
-            ],
-          ),
-        ),
-        Text(label)
-      ],
+            ),
+            SizedBox(height: constraints.maxHeight * 0.05),
+            Container(
+              height: constraints.maxHeight * 0.6,
+              width: 10,
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                  FractionallySizedBox(
+                    heightFactor: percentage,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: constraints.maxHeight * 0.05),
+            Container(
+              height: constraints.maxHeight * 0.1,
+              child: FittedBox(
+                child: Text(label),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
