@@ -6,7 +6,7 @@ import '../models/transaction.dart';
 
 class TransactionsOverView extends StatefulWidget {
   final List<Transaction> _transactions;
-  final Function(String) onDeleteTransactionRequest;
+  final Function(String) _onDeleteTransactionRequest;
 
   List<Transaction> get _transactionsOnLast7Days {
     return _transactions.where((element) {
@@ -14,13 +14,19 @@ class TransactionsOverView extends StatefulWidget {
     }).toList();
   }
 
-  TransactionsOverView(this._transactions, this.onDeleteTransactionRequest);
+  TransactionsOverView(this._transactions, this._onDeleteTransactionRequest);
 
   @override
   _TransactionsOverViewState createState() => _TransactionsOverViewState();
 }
 
 class _TransactionsOverViewState extends State<TransactionsOverView> {
+  bool _isChartVisible = false;
+
+  _onChartVisibilitySwithChanged(bool isChecked) {
+    setState(() => _isChartVisible = isChecked);
+  }
+
   @override
   Widget build(BuildContext context) {
     final appBarHeight = Scaffold.of(context).appBarMaxHeight;
@@ -30,15 +36,26 @@ class _TransactionsOverViewState extends State<TransactionsOverView> {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Container(
-            height: availableSize * 0.22,
-            child: Chart(transactions: widget._transactionsOnLast7Days),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Exibir gráfico'),
+              Switch(
+                value: _isChartVisible,
+                onChanged: (value) => _onChartVisibilitySwithChanged(value),
+              ),
+            ],
           ),
-          Container(
-            height: availableSize * 0.78,
-            child: TransactionsList(
-                widget._transactions, widget.onDeleteTransactionRequest),
-          ),
+          _isChartVisible
+              ? Container(
+                  height: availableSize * 0.22,
+                  child: Chart(transactions: widget._transactionsOnLast7Days),
+                )
+              : Container(
+                  height: availableSize * 0.78,
+                  child: TransactionsList(
+                      widget._transactions, widget._onDeleteTransactionRequest),
+                ),
         ],
       ),
     );
