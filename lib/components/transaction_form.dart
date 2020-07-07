@@ -69,56 +69,6 @@ class _TransactionFormState extends State<TransactionForm> {
                 ),
                 onFieldSubmitted: (_) => _onSubmit(),
               ),
-              TextFormField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
-                  labelText: 'Valor',
-                ),
-                onFieldSubmitted: (_) => _onSubmit(),
-              ),
-              TextFormField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
-                  labelText: 'Valor',
-                ),
-                onFieldSubmitted: (_) => _onSubmit(),
-              ),
-              TextFormField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
-                  labelText: 'Valor',
-                ),
-                onFieldSubmitted: (_) => _onSubmit(),
-              ),
-              TextFormField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
-                  labelText: 'Valor',
-                ),
-                onFieldSubmitted: (_) => _onSubmit(),
-              ),
-              TextFormField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
-                  labelText: 'Valor',
-                ),
-                onFieldSubmitted: (_) => _onSubmit(),
-              ),
               Row(
                 children: <Widget>[
                   Expanded(
