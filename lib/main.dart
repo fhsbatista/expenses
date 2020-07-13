@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:expenses/components/adaptative_widgets/adaptive_appbar.dart';
 import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transactions_overview.dart';
 import 'package:flutter/material.dart';
@@ -81,8 +82,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Despesas Pessoais'),
+      appBar: AdaptiveAppBar.getPlatformAppbar(
+        title: 'Despesas Pessoais',
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
