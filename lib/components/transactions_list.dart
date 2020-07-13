@@ -1,7 +1,6 @@
-import 'package:expenses/extensions.dart';
+import 'package:expenses/components/transaction_item.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactions;
@@ -18,7 +17,7 @@ class TransactionsList extends StatelessWidget {
             ? ListView.builder(
                 itemCount: transactions.length,
                 itemBuilder: (context, index) {
-                  return transactions[index].toCard(
+                  return transactions[index].toTransactionItem(
                     context,
                     (id) => onDeleteItem(id),
                   );
@@ -53,53 +52,14 @@ class TransactionsList extends StatelessWidget {
 }
 
 extension on Transaction {
-  Card toCard(BuildContext context, Function(String) onDelete) {
-    return Card(
-      elevation: 4,
-      child: ListTile(
-        leading: FittedBox(
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 10,
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.purple,
-                width: 2,
-              ),
-            ),
-            padding: EdgeInsets.all(10),
-            child: Text(
-              this.value.toCurrency(),
-              style: TextStyle(
-                  color: Colors.purple,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
-          ),
-        ),
-        title: Text(
-          this.title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        subtitle: Text(
-          DateFormat('EEEE, d MMM y').format(this.date),
-          style: TextStyle(
-            color: Colors.grey,
-          ),
-        ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.delete,
-            color: Theme.of(context).errorColor,
-          ),
-          onPressed: () => onDelete(this.id),
-        ),
-      ),
+  TransactionItem toTransactionItem(
+      BuildContext context, Function(String) onDelete) {
+    return TransactionItem(
+      id: this.id,
+      title: this.title,
+      value: this.value,
+      date: this.date,
+      onDelete: onDelete,
     );
   }
 }
